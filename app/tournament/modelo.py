@@ -2,10 +2,10 @@ from pydantic import BaseModel
 from sqlalchemy import Column, Date, Float, Integer, String, UniqueConstraint
 from sqlalchemy.sql.schema import ForeignKey
 
-from .. import db
+from ..db import Base
 
 
-class Tournament(db.Base):
+class Tournament(Base):
     __tablename__ = "tournament"
     id = Column("id", Integer, autoincrement=True, primary_key=True, unique=True)
     manager_id = Column(Integer, ForeignKey("manager.id"))

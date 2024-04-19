@@ -16,7 +16,7 @@ class TicketCompetitor(db.Base):
     UniqueConstraint("tournament_id", "competitor_id", name="tournament_competitor"),
 
 
-class TicketParticipantIn(BaseModel):
+class TicketCompetitorIn(BaseModel):
     tournament_id: int
     competitor_id: int
     qr_code: str
@@ -24,7 +24,7 @@ class TicketParticipantIn(BaseModel):
     was_use: bool
 
 
-class TicketParticipantOut(BaseModel):
+class TicketCompetitorOut(BaseModel):
     id: int
     tournament_id: int
     competitor_id: int

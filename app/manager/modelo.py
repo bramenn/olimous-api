@@ -22,7 +22,7 @@ class ManagerIn(BaseModel):
 
 
 class ManagerOut(BaseModel):
-    id: int
-    name: str
-    email: str
-    phone: str
+    id: int = 14
+    name: str = "Brayan Alejandro Herrera"
+    email: str = "brayann.herrera@pragma.com.co"
+    phone: str = "57305879123"
