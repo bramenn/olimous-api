@@ -18,7 +18,7 @@ router = APIRouter()
     operation_id="getManagers",
     responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
 )
-def obtener_todos_los_responsables():
+def get_all_managers():
     managers = get_all_managers_db()
     return managers
 
@@ -32,9 +32,9 @@ def obtener_todos_los_responsables():
     operation_id="getManager",
     responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
 )
-def obtener_suscripcion(id: str):
-    suscripcion = get_manager_id_db(id)
-    return suscripcion
+def get_manager_id(id: str):
+    manager = get_manager_id_db(id)
+    return manager
 
 
 @router.post(
@@ -46,6 +46,6 @@ def obtener_suscripcion(id: str):
     operation_id="createManager",
     responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
 )
-def crear_suscripcion(nuevo_suscripcion: ManagerIn):
-    suscripcion = create_manager_db(nuevo_suscripcion)
-    return suscripcion
+def create_manager(nuevo_manager: ManagerIn):
+    manager = create_manager_db(nuevo_manager)
+    return manager

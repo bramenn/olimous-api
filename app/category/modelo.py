@@ -30,11 +30,11 @@ class CategoryIn(BaseModel):
 
 
 class CategoryOut(BaseModel):
-    id: int
-    name: str
-    alias: str
-    description: str
-    limit_viwers: int
-    limit_participants: int
-    comission: float
-    is_free: bool
+    id: int = 1
+    name: str = "Gratiuto"
+    alias: str = "free"
+    description: str = "Crea una categoria completamente gratuita para todos los posibles torneos de la plataforma olimpus"
+    limit_viwers: int = 10
+    limit_participants: int = 5
+    comission: float = 0
+    is_free: bool = True

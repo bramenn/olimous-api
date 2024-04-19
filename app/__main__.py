@@ -6,18 +6,14 @@ from .db import Base, conn
 from .game import endpoint as game_endpoint
 from .manager import endpoint as manager_endpoint
 
-# from .responsable import endpoint as responsable_endpoint
-# from .suscripcion import endpoint as suscripcion_endpoint
-
 app = FastAPI()
 
-# app.include_router(responsable_endpoint.router, prefix="/v1/responsable", tags=["responsable"])
+app.include_router(category_endpoint.router, prefix="/v1/category", tags=["category"])
 app.include_router(
     manager_endpoint.router,
     prefix="/v1/manager",
     tags=["manager"],
 )
-# app.include_router(suscripcion_endpoint.router, prefix="/v1/suscripcion", tags=["suscripcion"])
 
 
 if __name__ == "__main__":
