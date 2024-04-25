@@ -29,11 +29,11 @@ class TournamentIn(BaseModel):
 
 
 class TournamentOut(BaseModel):
-    id: int
-    manager_id: int
-    category_id: int
-    game_id: int
-    date: int  # TODO investigar que tipo de dato poner aqui
-    cost_view: float
-    cost_competitor: float
-    name: str
+    id: int = 1
+    manager_id: int = 123
+    category_id: int = 321
+    game_id: int = 456
+    date: int = 20240503  # TODO investigar que tipo de dato poner aqui
+    cost_view: float = 0.003
+    cost_competitor: float = 0.01
+    name: str = "Torneo de League of Legends"

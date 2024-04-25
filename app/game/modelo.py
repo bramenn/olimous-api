@@ -18,5 +18,5 @@ class GameIn(BaseModel):
 
 
 class GameOut(BaseModel):
-    id: int
-    name: str
+    id: int = 1
+    name: str = "League of Legends"

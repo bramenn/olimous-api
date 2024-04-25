@@ -25,9 +25,9 @@ class TicketViewerIn(BaseModel):
 
 
 class TicketViewerOut(BaseModel):
-    id: int
-    tournament_id: int
-    viewer_id: int
-    qr_code: str
-    is_active: bool
-    was_use: bool
+    id: int = 1
+    tournament_id: int = 123
+    viewer_id: int = 321
+    qr_code: str = "gckwqvekvgkwecdvkwehvckeuwgvfklwhvfkwqevhfkwjhvfkwqjhvefkjewqvfkewqjhgvcf"
+    is_active: bool = False
+    was_use: bool = False

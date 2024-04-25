@@ -25,9 +25,9 @@ class TicketCompetitorIn(BaseModel):
 
 
 class TicketCompetitorOut(BaseModel):
-    id: int
-    tournament_id: int
-    competitor_id: int
-    qr_code: str
-    is_active: bool
-    was_use: bool
+    id: int = 1
+    tournament_id: int = 123
+    competitor_id: int = 321
+    qr_code: str = "gckwqvekvgkwecdvkwehvckeuwgvfklwhvfkwqevhfkwjhvfkwqjhvefkjewqvfkewqjhgvcf"
+    is_active: bool = False
+    was_use: bool = False

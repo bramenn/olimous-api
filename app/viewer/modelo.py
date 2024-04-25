@@ -24,8 +24,8 @@ class ViewerIn(BaseModel):
 
 
 class ViewerOut(BaseModel):
-    id: int
-    name: str
-    email: str
-    alias: str
-    phone: str
+    id: int = 1
+    name: str = "Briana Delgado"
+    email: str = "bridelda@localhost"
+    alias: str = "bride"
+    phone: str = "51354641341354"

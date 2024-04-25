@@ -24,8 +24,8 @@ class CompetitorIn(BaseModel):
 
 
 class CompetitorOut(BaseModel):
-    id: int
-    name: str
-    email: str
-    alias: str
-    phone: str
+    id: int = 1
+    name: str = "Sebastian Durango"
+    email: str = "sebasdurango@localhost"
+    alias: str = "sebis"
+    phone: str = "573123456789"
