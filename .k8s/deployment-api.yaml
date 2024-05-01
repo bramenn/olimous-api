@@ -19,6 +19,6 @@ spec:
         image: bramenn/olimpus
         env:
         - name: POSTGRES_URI
-          value: ${{ secrets.POSTGRESURI }}
+          value: "$POSTGRESURI"
         ports:
         - containerPort: 80
