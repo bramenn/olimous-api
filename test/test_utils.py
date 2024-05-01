@@ -1,4 +1,4 @@
-from .generate_qr import qr_str
+from app.utils.generate_qr import qr_str
 
 
 def test_validate_type():
