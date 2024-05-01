@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: olimpus-deployment
+  labels:
+    app: olimpus-ilb-deployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: olimpus-ilb-deployment
+  template:
+    metadata:
+      labels:
+        app: olimpus-ilb-deployment
+    spec:
+      containers:
+      - name: olimpus
+        image: bramenn/olimpus
+        env:
+        - name: POSTGRES_URI
+          value: ${{ secrets.POSTGRESURI }}
+        ports:
+        - containerPort: 80
