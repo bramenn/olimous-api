@@ -32,7 +32,6 @@ def get_tournament_id_db(id: str) -> TournamentOut:
 def create_tournament_db(
     new_tournament: TournamentIn,
 ) -> TournamentOut:
-
     print(new_tournament.date)
 
     tournament = Tournament(

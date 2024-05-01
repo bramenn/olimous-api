@@ -51,7 +51,6 @@ def get_ticket_competitor_qr_code_db(qr_code: str) -> TicketCompetitorOut:
 def create_ticket_competitor_db(
     new_ticket_competitor: TicketCompetitorIn,
 ) -> TicketCompetitorOut:
-
     ticket_competitor = TicketCompetitor(
         tournament_id=new_ticket_competitor.tournament_id,
         competitor_id=new_ticket_competitor.competitor_id,
