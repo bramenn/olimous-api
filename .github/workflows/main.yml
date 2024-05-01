@@ -65,3 +65,15 @@ jobs:
         with:
           push: true
           tags: bramenn/olimpus:latest
+
+      - name: Create kubeconfig
+        run: |
+          mkdir ${HOME}/.kube
+          echo ${{ secrets.KUBECONFIG }} | base64 --decode > ${HOME}/.kube/config
+          cat ${HOME}/.kube/config
+
+      - name: Use context
+        run: kubectl config use-context octobay-api
+
+      - name: Deploy to K8s
+        run: kubectl apply -f k8s/
