@@ -19,9 +19,6 @@ class TicketCompetitor(db.Base):
 class TicketCompetitorIn(BaseModel):
     tournament_id: int
     competitor_id: int
-    qr_code: str
-    is_active: bool
-    was_use: bool
 
 
 class TicketCompetitorOut(BaseModel):

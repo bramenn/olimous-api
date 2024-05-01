@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ticket de Torneo {{ tournament_name }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+            text-align: center;
+        }
+        .ticket {
+            background-color: #ee9292;
+            width: 300px;
+            margin: 20px auto;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            color: #333;
+        }
+        p {
+            color: #666;
+        }
+        .qr-code {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="ticket">
+        <h1>Ticket de Torneo {{ tournament_name }}</h1>
+        <p><strong>ID del Ticket:</strong> #{{ ticket_id }}</p>
+        <p><strong>Nombre del Torneo:</strong> {{ tournament_name }}</p>
+        <p><strong>Nombre del Usuario:</strong> {{ user_name }}</p>
+        <div class="qr-code">
+            <img id='barcode'
+                src="https://api.qrserver.com/v1/create-qr-code/?data={{qr_code_url}}&amp;size=1000x1000"
+                alt=""
+                title="HELLO"
+                width="150"
+                height="150" />
+        </div>
+    </div>
+</body>
+</html>

@@ -32,6 +32,9 @@ def get_tournament_id_db(id: str) -> TournamentOut:
 def create_tournament_db(
     new_tournament: TournamentIn,
 ) -> TournamentOut:
+
+    print(new_tournament.date)
+
     tournament = Tournament(
         manager_id=new_tournament.manager_id,
         category_id=new_tournament.category_id,
@@ -60,7 +63,7 @@ def parse_tournament(tournament: Tournament) -> TournamentOut:
         manager_id=tournament.manager_id,
         category_id=tournament.category_id,
         game_id=tournament.game_id,
-        date=tournament.date,
+        date=tournament.date.__str__(),
         cost_view=tournament.cost_view,
         cost_competitor=tournament.cost_competitor,
         name=tournament.name,
