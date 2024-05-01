@@ -2,6 +2,7 @@ from fastapi import status
 from fastapi.exceptions import HTTPException
 
 from .. import db
+from ..utils.generate_qr import qr_str
 from .modelo import TicketCompetitor, TicketCompetitorIn, TicketCompetitorOut
 
 
@@ -29,15 +30,31 @@ def get_ticket_competitor_id_db(id: str) -> TicketCompetitorOut:
     return parse_ticket_competitor(ticket_competitor)
 
 
+def get_ticket_competitor_qr_code_db(qr_code: str) -> TicketCompetitorOut:
+    print(qr_code)
+    ticket_competitor = (
+        db.session.query(TicketCompetitor).where(TicketCompetitor.qr_code == qr_code).first()
+    )
+
+    if not ticket_competitor:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="TicketCompetitor no encontrada",
+        )
+
+    ticket_competitor.was_use = True
+    db.session.commit()
+
+    return parse_ticket_competitor(ticket_competitor)
+
+
 def create_ticket_competitor_db(
     new_ticket_competitor: TicketCompetitorIn,
 ) -> TicketCompetitorOut:
     ticket_competitor = TicketCompetitor(
         tournament_id=new_ticket_competitor.tournament_id,
         competitor_id=new_ticket_competitor.competitor_id,
-        qr_code=new_ticket_competitor.qr_code,
-        is_active=new_ticket_competitor.is_active,
-        was_use=new_ticket_competitor.was_use,
+        qr_code=qr_str(new_ticket_competitor.tournament_id, new_ticket_competitor.competitor_id),
     )
 
     try:

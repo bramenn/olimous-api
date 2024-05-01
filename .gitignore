@@ -1,4 +1,5 @@
 *db
+*junit
 *env
 *__pycache__/
 .env

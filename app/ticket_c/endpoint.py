@@ -1,16 +1,19 @@
 from typing import List
 
-from fastapi import APIRouter
+from fastapi import APIRouter, Request
+from fastapi.templating import Jinja2Templates
 
 from ..responses.http import _404NotFound, _500ServerError
 from .consultas import (
     create_ticket_competitor_db,
     get_all_ticket_competitors_db,
     get_ticket_competitor_id_db,
+    get_ticket_competitor_qr_code_db,
 )
 from .modelo import TicketCompetitorIn, TicketCompetitorOut
 
 router = APIRouter()
+templates = Jinja2Templates(directory="templates")
 
 
 @router.get(
@@ -41,6 +44,20 @@ def get_ticket_competitor_id(id: str):
     return ticket_competitor
 
 
+@router.get(
+    "/read_qr/{qr_code}",
+    response_model=TicketCompetitorOut,
+    status_code=200,
+    summary="Obtenga una categoria por id",
+    description="Una categoria sera entregada",
+    operation_id="getTicketCompetitor",
+    responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
+)
+def get_ticket_competitor_id(qr_code: str):
+    ticket_competitor = get_ticket_competitor_qr_code_db(qr_code)
+    return ticket_competitor
+
+
 @router.post(
     "/",
     response_model=TicketCompetitorOut,
@@ -50,6 +67,12 @@ def get_ticket_competitor_id(id: str):
     operation_id="createTicketCompetitor",
     responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
 )
-def create_ticket_competitor(nuevo_ticket_competitor: TicketCompetitorIn):
+def create_ticket_competitor(request: Request, nuevo_ticket_competitor: TicketCompetitorIn):
     ticket_competitor = create_ticket_competitor_db(nuevo_ticket_competitor)
-    return ticket_competitor
+    data = {
+        "ticket_id": ticket_competitor.id,
+        "tournament_name": ticket_competitor.tournament_id,
+        "user_name": ticket_competitor.competitor_id,
+        "qr_code_url": f"{request.url}read_qr/{ticket_competitor.qr_code}",
+    }
+    return templates.TemplateResponse("ticket_template.html", {"request": request, **data})
