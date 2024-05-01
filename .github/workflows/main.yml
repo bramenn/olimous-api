@@ -1,14 +1,6 @@
 name: Python lint and CI/CD
 
-on: [push, pull_request]
-
-# env:
-#   AWS_REGION: ${{ secrets.AWS_REGION }}
-#   ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY }}
-#   ECS_SERVICE: ${{ secrets.ECS_SERVICE }}
-#   ECS_CLUSTER: ${{ secrets.ECS_CLUSTER }}
-#   CONTAINER_NAME: ${{ secrets.CONTAINER_NAME }}
-
+on: [pull_request]
 
 jobs:
   lint:
@@ -33,7 +25,6 @@ jobs:
         pre-commit run -av check-yaml
         pre-commit run -av check-added-large-files
 
-    # Install pip and pytest
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -69,7 +60,7 @@ jobs:
       - name: Create kubeconfig
         run: |
           mkdir ${HOME}/.kube
-          echo ${{ secrets.KUBECONFIG }} | base64 --decode > ${HOME}/.kube/config
+          echo '${{ secrets.KUBECONFIG }}' | base64 --decode > ${HOME}/.kube/config
           cat ${HOME}/.kube/config
 
       - name: Use context
