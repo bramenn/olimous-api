@@ -1,6 +1,12 @@
 name: Python lint and CI/CD
 
-on: [pull_request]
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches:
+      - 'feature/**'
 
 jobs:
   lint:
