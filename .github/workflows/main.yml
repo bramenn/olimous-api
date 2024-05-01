@@ -1,15 +1,11 @@
 name: Python lint and CI/CD
 
 
-on:
-  push:
-    branches: [ master ]
-  pull_request:
-    branches:
-      - 'feature/**'
+on: [push, pull_request]
 
 jobs:
   lint:
+    if: ${{ github.event_name == 'pull_request' }}
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
