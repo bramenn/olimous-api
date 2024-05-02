@@ -1,6 +1,5 @@
 import uvicorn
 from fastapi import FastAPI
-from fastapi.staticfiles import StaticFiles
 
 from .category import endpoint as category_endpoint
 from .competitor import endpoint as competitor_endpoint
@@ -12,8 +11,11 @@ from .ticket_v import endpoint as ticket_v_endpoint
 from .tournament import endpoint as tournament_endpoint
 from .viewer import endpoint as viewer_endpoint
 
+# from fastapi.staticfiles import StaticFiles
+
+
 app = FastAPI()
-app.mount("/static", StaticFiles(directory="static"), name="static")
+# app.mount("/static", StaticFiles(directory="static"), name="static")
 
 
 app.include_router(category_endpoint.router, prefix="/v1/category", tags=["category"])
