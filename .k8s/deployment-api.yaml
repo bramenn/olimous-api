@@ -19,6 +19,6 @@ spec:
         image: bramenn/olimpus
         env:
         - name: POSTGRES_URI
-          value: "postgresql://bramen:bramen@/0.tcp.ngrok.io:12978/olimpus"
+          value: "postgresql://bramen:bramen@/0.tcp.ngrok.io:12978/olimpus?sslmode=disable"
         ports:
         - containerPort: 80
