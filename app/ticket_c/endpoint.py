@@ -5,6 +5,7 @@ from fastapi.templating import Jinja2Templates
 
 from ..responses.http import _404NotFound, _409Conflict, _500ServerError
 from .consultas import (
+    block_qr_code_access,
     create_ticket_competitor_db,
     get_all_ticket_competitors_db,
     get_ticket_competitor_id_db,
@@ -56,6 +57,34 @@ def get_ticket_competitor_id(id: str):
 def get_ticket_competitor_id(qr_code: str):
     ticket_competitor = get_ticket_competitor_qr_code_db(qr_code)
     return ticket_competitor
+
+
+@router.get(
+    "/block_access/{qr_code}",
+    response_model=TicketCompetitorOut,
+    status_code=200,
+    summary="Obtenga una categoria por id",
+    description="Una categoria sera entregada",
+    operation_id="getTicketCompetitor",
+    responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
+)
+def get_ticket_competitor_id(qr_code: str):
+    blocked_ticket_competitor = block_qr_code_access(qr_code)
+    return blocked_ticket_competitor
+
+
+@router.get(
+    "/unlock_access/{qr_code}",
+    response_model=TicketCompetitorOut,
+    status_code=200,
+    summary="Obtenga una categoria por id",
+    description="Una categoria sera entregada",
+    operation_id="getTicketCompetitor",
+    responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
+)
+def get_ticket_competitor_id(qr_code: str):
+    unlocked_ticket_competitor = block_qr_code_access(qr_code, True)
+    return unlocked_ticket_competitor
 
 
 @router.post(

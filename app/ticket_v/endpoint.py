@@ -5,6 +5,7 @@ from fastapi.templating import Jinja2Templates
 
 from ..responses.http import _404NotFound, _409Conflict, _500ServerError
 from .consultas import (
+    block_qr_code_access,
     create_ticket_viewer_db,
     get_all_ticket_viewers_db,
     get_ticket_viewer_id_db,
@@ -56,6 +57,34 @@ def get_ticket_viewer_id(id: str):
 def get_ticket_viewer_id(qr_code: str):
     ticket_viewer = get_ticket_viewer_qr_code_db(qr_code)
     return ticket_viewer
+
+
+@router.get(
+    "/block_access/{qr_code}",
+    response_model=TicketViewerOut,
+    status_code=200,
+    summary="Obtenga una categoria por id",
+    description="Una categoria sera entregada",
+    operation_id="getTicketViewer",
+    responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
+)
+def get_ticket_viewer_id(qr_code: str):
+    blocked_ticket_viewer = block_qr_code_access(qr_code)
+    return blocked_ticket_viewer
+
+
+@router.get(
+    "/unlock_access/{qr_code}",
+    response_model=TicketViewerOut,
+    status_code=200,
+    summary="Obtenga una categoria por id",
+    description="Una categoria sera entregada",
+    operation_id="getTicketViewer",
+    responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
+)
+def get_ticket_viewer_id(qr_code: str):
+    unlocked_ticket_viewer = block_qr_code_access(qr_code, True)
+    return unlocked_ticket_viewer
 
 
 @router.post(
