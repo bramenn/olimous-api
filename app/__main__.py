@@ -17,6 +17,7 @@ from .viewer import endpoint as viewer_endpoint
 app = FastAPI()
 # app.mount("/static", StaticFiles(directory="static"), name="static")
 
+# Hola esto es un comentario
 
 app.include_router(category_endpoint.router, prefix="/v1/category", tags=["category"])
 app.include_router(competitor_endpoint.router, prefix="/v1/competitor", tags=["competitor"])
