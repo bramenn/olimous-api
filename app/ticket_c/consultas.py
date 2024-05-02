@@ -20,7 +20,7 @@ def get_all_ticket_competitors_db() -> TicketCompetitorOut:
     return [parse_ticket_competitor(ticket_competitor) for ticket_competitor in ticket_competitors]
 
 
-def get_tickets_competitors_by_tournament_id_db(tournament_id: int) -> TicketCompetitorOut:
+def get_tickets_competitors_by_tournament_id_db(tournament_id: int) -> int:
     tickets = (
         db.session.query(TicketCompetitor)
         .where(TicketCompetitor.tournament_id == tournament_id)
@@ -78,14 +78,10 @@ def create_ticket_competitor_db(
         competitor_id=new_ticket_competitor.competitor_id,
         qr_code=qr_str(new_ticket_competitor.tournament_id, new_ticket_competitor.competitor_id),
     )
-
-    cost_commission = tournament.cost_competitor * category.commission
-    total_price = tournament.cost_competitor + cost_commission
-
     try:
         db.session.add(ticket_competitor)
         db.session.commit()
-        return parse_ticket_competitor(ticket_competitor, total_price, cost_commission)
+        return parse_ticket_competitor(ticket_competitor)
     except Exception as e:
         print("No se ha creado la ticket_competitor: ", e)
         raise HTTPException(
@@ -94,9 +90,18 @@ def create_ticket_competitor_db(
         )
 
 
-def parse_ticket_competitor(
-    ticket_competitor: TicketCompetitor, cost_competitor: float = 0, commission: float = 0
-) -> TicketCompetitorOut:
+def generate_cost_commission_and_total_price(ticket: TicketCompetitor) -> tuple:
+    tournament = get_tournament_id_db(ticket.tournament_id)
+    category = get_category_id_db(tournament.category_id)
+
+    cost_commission = tournament.cost_competitor * category.commission
+    total_price = tournament.cost_competitor + cost_commission
+
+    return cost_commission, total_price
+
+
+def parse_ticket_competitor(ticket_competitor: TicketCompetitor) -> TicketCompetitorOut:
+    cost_commission, total_price = generate_cost_commission_and_total_price(ticket_competitor)
     return TicketCompetitorOut(
         id=ticket_competitor.id,
         tournament_id=ticket_competitor.tournament_id,
@@ -104,6 +109,6 @@ def parse_ticket_competitor(
         qr_code=ticket_competitor.qr_code,
         is_active=ticket_competitor.is_active,
         was_use=ticket_competitor.was_use,
-        total_price=cost_competitor,
-        commission=commission,
+        total_price=total_price,
+        commission=cost_commission,
     )

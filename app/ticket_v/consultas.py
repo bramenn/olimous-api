@@ -20,7 +20,7 @@ def get_all_ticket_viewers_db() -> TicketViewerOut:
     return [parse_ticket_viewer(ticket_viewer) for ticket_viewer in ticket_viewers]
 
 
-def get_tickets_viewer_by_tournament_id_db(tournament_id: int) -> TicketViewerOut:
+def get_tickets_viewer_by_tournament_id_db(tournament_id: int) -> int:
     tickets = (
         db.session.query(TicketViewer).where(TicketViewer.tournament_id == tournament_id).count()
     )
@@ -75,13 +75,10 @@ def create_ticket_viewer_db(
         qr_code=qr_str(new_ticket_viewer.tournament_id, new_ticket_viewer.viewer_id),
     )
 
-    cost_commission = tournament.cost_view * category.commission
-    total_price = tournament.cost_view + cost_commission
-
     try:
         db.session.add(ticket_viewer)
         db.session.commit()
-        return parse_ticket_viewer(ticket_viewer, total_price, cost_commission)
+        return parse_ticket_viewer(ticket_viewer)
     except Exception as e:
         print("No se ha creado la ticket_viewer: ", e)
         raise HTTPException(
@@ -90,9 +87,18 @@ def create_ticket_viewer_db(
         )
 
 
-def parse_ticket_viewer(
-    ticket_viewer: TicketViewer, cost_viewer: float = 0, commission: float = 0
-) -> TicketViewerOut:
+def generate_cost_commission_and_total_price(ticket: TicketViewer) -> tuple:
+    tournament = get_tournament_id_db(ticket.tournament_id)
+    category = get_category_id_db(tournament.category_id)
+
+    cost_commission = tournament.cost_competitor * category.commission
+    total_price = tournament.cost_competitor + cost_commission
+
+    return cost_commission, total_price
+
+
+def parse_ticket_viewer(ticket_viewer: TicketViewer) -> TicketViewerOut:
+    cost_commission, total_price = generate_cost_commission_and_total_price(ticket_viewer)
     return TicketViewerOut(
         id=ticket_viewer.id,
         tournament_id=ticket_viewer.tournament_id,
@@ -100,6 +106,6 @@ def parse_ticket_viewer(
         qr_code=ticket_viewer.qr_code,
         is_active=ticket_viewer.is_active,
         was_use=ticket_viewer.was_use,
-        total_price=cost_viewer,
-        commission=commission,
+        total_price=total_price,
+        commission=cost_commission,
     )
