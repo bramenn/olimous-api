@@ -2,6 +2,7 @@ from fastapi import status
 from fastapi.exceptions import HTTPException
 
 from .. import db
+from ..config import DEFAUL_FREE_LIMIT_PARTICIPANTS, DEFAUL_FREE_LIMIT_VIEWERS
 from .modelo import Category, CategoryIn, CategoryOut
 
 
@@ -36,9 +37,13 @@ def create_category_db(
         name=new_category.name,
         alias=new_category.alias,
         description=new_category.description,
-        limit_viwers=new_category.limit_viwers,
-        limit_participants=new_category.limit_participants,
-        comission=new_category.comission,
+        limit_viwers=new_category.limit_viwers
+        if not new_category.is_free
+        else DEFAUL_FREE_LIMIT_VIEWERS,
+        limit_participants=new_category.limit_participants
+        if not new_category.is_free
+        else DEFAUL_FREE_LIMIT_PARTICIPANTS,
+        comission=new_category.comission if not new_category.is_free else 0,
         is_free=new_category.is_free,
     )
 
