@@ -63,7 +63,7 @@ def create_ticket_viewer_db(
     tournament = get_tournament_id_db(new_ticket_viewer.tournament_id)
     category = get_category_id_db(tournament.category_id)
 
-    if tickets_sold >= category.limit_participants:
+    if tickets_sold >= category.limit_participants and category.is_free:
         raise HTTPException(
             status_code=status.HTTP_409_CONFLICT,
             detail="No se pueden vender mas ticket para este torneo ya que has sobrepasado la cantidad maxima",
