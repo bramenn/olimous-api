@@ -19,9 +19,6 @@ class TicketViewer(db.Base):
 class TicketViewerIn(BaseModel):
     tournament_id: int
     viewer_id: int
-    qr_code: str
-    is_active: bool
-    was_use: bool
 
 
 class TicketViewerOut(BaseModel):
@@ -31,3 +28,5 @@ class TicketViewerOut(BaseModel):
     qr_code: str = "gckwqvekvgkwecdvkwehvckeuwgvfklwhvfkwqevhfkwjhvfkwqjhvefkjewqvfkewqjhgvcf"
     is_active: bool = False
     was_use: bool = False
+    total_price: float = 185.8
+    commission: float = 3.1

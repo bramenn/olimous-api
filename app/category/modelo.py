@@ -36,5 +36,5 @@ class CategoryOut(BaseModel):
     description: str = "Crea una categoria completamente gratuita para todos los posibles torneos de la plataforma olimpus"
     limit_viwers: int = 10
     limit_participants: int = 5
-    comission: float = 0
+    commission: float = 0
     is_free: bool = True

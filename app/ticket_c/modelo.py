@@ -28,3 +28,5 @@ class TicketCompetitorOut(BaseModel):
     qr_code: str = "gckwqvekvgkwecdvkwehvckeuwgvfklwhvfkwqevhfkwjhvfkwqjhvefkjewqvfkewqjhgvcf"
     is_active: bool = False
     was_use: bool = False
+    total_price: float = 185.8
+    commission: float = 3.1
