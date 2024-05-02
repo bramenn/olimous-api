@@ -11,7 +11,7 @@ class TicketCompetitor(db.Base):
     tournament_id = Column(Integer, ForeignKey("tournament.id"))
     competitor_id = Column(Integer, ForeignKey("competitor.id"))
     qr_code = Column("qr_code", String(4000), unique=True, nullable=False)
-    is_active = Column(Boolean, default=False)
+    is_active = Column(Boolean, default=True)
     was_use = Column(Boolean, default=False)
     UniqueConstraint("tournament_id", "competitor_id", name="tournament_competitor"),
 

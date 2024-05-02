@@ -45,8 +45,28 @@ def get_ticket_viewers_by_viewer_id_db(viewer_id: str) -> int:
     return tickets
 
 
+def is_blocked_qr_code(qr_code: str) -> bool:
+    ticket_viewer = db.session.query(TicketViewer).where(TicketViewer.qr_code == qr_code).first()
+
+    if not ticket_viewer:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="TicketViewer no encontrada",
+        )
+
+    if not ticket_viewer.is_active:
+        raise HTTPException(
+            status_code=status.HTTP_423_LOCKED,
+            detail="El acceso de este ticket fue sido bloqueado",
+        )
+
+    return False
+
+
 def get_ticket_viewer_qr_code_db(qr_code: str) -> TicketViewerOut:
-    print(qr_code)
+
+    is_blocked_qr_code(qr_code)
+
     ticket_viewer = db.session.query(TicketViewer).where(TicketViewer.qr_code == qr_code).first()
 
     if not ticket_viewer:
@@ -58,6 +78,13 @@ def get_ticket_viewer_qr_code_db(qr_code: str) -> TicketViewerOut:
     ticket_viewer.was_use = True
     db.session.commit()
 
+    return parse_ticket_viewer(ticket_viewer)
+
+
+def block_qr_code_access(qr_code: str, unlock: bool = False) -> TicketViewerOut:
+    ticket_viewer = db.session.query(TicketViewer).where(TicketViewer.qr_code == qr_code).first()
+    ticket_viewer.is_active = unlock
+    db.session.commit()
     return parse_ticket_viewer(ticket_viewer)
 
 

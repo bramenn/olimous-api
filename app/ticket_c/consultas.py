@@ -50,8 +50,30 @@ def get_ticket_competitors_by_competitor_id_db(competitor_id: str) -> int:
     return tickets
 
 
+def is_blocked_qr_code(qr_code: str) -> bool:
+    ticket_competitor = (
+        db.session.query(TicketCompetitor).where(TicketCompetitor.qr_code == qr_code).first()
+    )
+
+    if not ticket_competitor:
+        raise HTTPException(
+            status_code=status.HTTP_404_NOT_FOUND,
+            detail="TicketCompetitor no encontrada",
+        )
+
+    if not ticket_competitor.is_active:
+        raise HTTPException(
+            status_code=status.HTTP_423_LOCKED,
+            detail="El acceso de este ticket fue sido bloqueado",
+        )
+
+    return False
+
+
 def get_ticket_competitor_qr_code_db(qr_code: str) -> TicketCompetitorOut:
-    print(qr_code)
+
+    is_blocked_qr_code(qr_code)
+
     ticket_competitor = (
         db.session.query(TicketCompetitor).where(TicketCompetitor.qr_code == qr_code).first()
     )
@@ -65,6 +87,15 @@ def get_ticket_competitor_qr_code_db(qr_code: str) -> TicketCompetitorOut:
     ticket_competitor.was_use = True
     db.session.commit()
 
+    return parse_ticket_competitor(ticket_competitor)
+
+
+def block_qr_code_access(qr_code: str, unlock: bool = False) -> TicketCompetitorOut:
+    ticket_competitor = (
+        db.session.query(TicketCompetitor).where(TicketCompetitor.qr_code == qr_code).first()
+    )
+    ticket_competitor.is_active = unlock
+    db.session.commit()
     return parse_ticket_competitor(ticket_competitor)
 
 
