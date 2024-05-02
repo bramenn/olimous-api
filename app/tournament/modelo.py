@@ -15,7 +15,6 @@ class Tournament(Base):
     cost_view = Column(Float, default=0)
     cost_competitor = Column(Float, default=0)
     name = Column("name", String(100), unique=True, nullable=False)
-    UniqueConstraint("manager_id", "category_id", name="manager_category"),
 
 
 class TournamentIn(BaseModel):

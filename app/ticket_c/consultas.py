@@ -41,6 +41,15 @@ def get_ticket_competitor_id_db(id: str) -> TicketCompetitorOut:
     return parse_ticket_competitor(ticket_competitor)
 
 
+def get_ticket_competitors_by_competitor_id_db(competitor_id: str) -> int:
+    tickets = (
+        db.session.query(TicketCompetitor)
+        .where(TicketCompetitor.competitor_id == competitor_id)
+        .count()
+    )
+    return tickets
+
+
 def get_ticket_competitor_qr_code_db(qr_code: str) -> TicketCompetitorOut:
     print(qr_code)
     ticket_competitor = (
@@ -62,6 +71,17 @@ def get_ticket_competitor_qr_code_db(qr_code: str) -> TicketCompetitorOut:
 def create_ticket_competitor_db(
     new_ticket_competitor: TicketCompetitorIn,
 ) -> TicketCompetitorOut:
+
+    tickets_competitor = get_ticket_competitors_by_competitor_id_db(
+        new_ticket_competitor.competitor_id
+    )
+
+    if tickets_competitor >= 1:
+        raise HTTPException(
+            status_code=status.HTTP_409_CONFLICT,
+            detail="Has superado la cantidad maxima de tickets que puedes comprar",
+        )
+
     tickets_sold = get_tickets_competitors_by_tournament_id_db(new_ticket_competitor.tournament_id)
 
     tournament = get_tournament_id_db(new_ticket_competitor.tournament_id)
