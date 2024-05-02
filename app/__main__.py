@@ -11,13 +11,7 @@ from .ticket_v import endpoint as ticket_v_endpoint
 from .tournament import endpoint as tournament_endpoint
 from .viewer import endpoint as viewer_endpoint
 
-# from fastapi.staticfiles import StaticFiles
-
-
 app = FastAPI()
-# app.mount("/static", StaticFiles(directory="static"), name="static")
-
-# Hola esto es un comentario
 
 app.include_router(category_endpoint.router, prefix="/v1/category", tags=["category"])
 app.include_router(competitor_endpoint.router, prefix="/v1/competitor", tags=["competitor"])

@@ -3,7 +3,7 @@ from typing import List
 from fastapi import APIRouter, Request
 from fastapi.templating import Jinja2Templates
 
-from ..responses.http import _404NotFound, _500ServerError
+from ..responses.http import _404NotFound, _409Conflict, _500ServerError
 from .consultas import (
     create_ticket_competitor_db,
     get_all_ticket_competitors_db,
@@ -65,7 +65,11 @@ def get_ticket_competitor_id(qr_code: str):
     summary="Cree una categoria",
     description="Cree una categoria enviando sus datos en un JSON",
     operation_id="createTicketCompetitor",
-    responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
+    responses={
+        404: {"model": _404NotFound},
+        500: {"model": _500ServerError},
+        409: {"model": _409Conflict},
+    },
 )
 def create_ticket_competitor(request: Request, nuevo_ticket_competitor: TicketCompetitorIn):
     ticket_competitor = create_ticket_competitor_db(nuevo_ticket_competitor)
@@ -74,5 +78,7 @@ def create_ticket_competitor(request: Request, nuevo_ticket_competitor: TicketCo
         "tournament_name": ticket_competitor.tournament_id,
         "user_name": ticket_competitor.competitor_id,
         "qr_code_url": f"{request.url}read_qr/{ticket_competitor.qr_code}",
+        "total_price": ticket_competitor.total_price,
+        "comission": ticket_competitor.commission,
     }
     return templates.TemplateResponse("ticket_template.html", {"request": request, **data})

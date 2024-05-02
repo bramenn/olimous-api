@@ -62,6 +62,6 @@ def parse_category(category: Category) -> CategoryOut:
         description=category.description,
         limit_viwers=category.limit_viwers,
         limit_participants=category.limit_participants,
-        comission=category.comission,
+        commission=category.comission,
         is_free=category.is_free,
     )
