@@ -74,4 +74,6 @@ jobs:
           echo '${{ secrets.KUBECONFIG }}' | base64 --decode > ${HOME}/.kube/config
 
       - name: Deploy to K8s
-        run: kubectl apply -f .k8s/
+        run: |
+          kubectl apply -f .k8s/
+          kubectl rollout restart deployment/olimpus-deployment
