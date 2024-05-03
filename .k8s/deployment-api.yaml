@@ -21,10 +21,10 @@ spec:
         - name: POSTGRES_URI
           value: "postgresql://bramen:bramen@0.tcp.ngrok.io:19056/olimpus"
         - name: MAX_TICKET_BY_VIEWER
-          value: 3
-        - name: DEFAUL_FREE_LIMIT_VIWERS
-          value: 10
+          value: "3"
+        - name: DEFAUL_FREE_LIMIT_VIEWERS
+          value: "10"
         - name: DEFAUL_FREE_LIMIT_PARTICIPANTS
-          value: 5
+          value: "5"
         ports:
         - containerPort: 80

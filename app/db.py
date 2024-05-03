@@ -4,7 +4,7 @@ from sqlalchemy.orm import sessionmaker
 
 from .config import POSTGRES_URI
 
-conn = create_engine(POSTGRES_URI)
+conn = create_engine(POSTGRES_URI, pool_pre_ping=True)
 
 Session = sessionmaker(bind=conn)
 
