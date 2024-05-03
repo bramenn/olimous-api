@@ -13,8 +13,8 @@ router = APIRouter()
     "/",
     response_model=List[GameOut],
     status_code=200,
-    summary="Obtenga todas las categorias",
-    description="Multiples categorias seran entregados en una lista de json, separados por comas ",
+    summary="Obtenga todos los juegos",
+    description="Multiples juegos seran entregados en una lista de json, separados por comas ",
     operation_id="getGames",
     responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
 )
@@ -27,8 +27,8 @@ def get_all_games():
     "/{id}",
     response_model=GameOut,
     status_code=200,
-    summary="Obtenga una categoria por id",
-    description="Una categoria sera entregada",
+    summary="Obtenga una juego por id",
+    description="Una juego sera entregada",
     operation_id="getGame",
     responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
 )
@@ -41,8 +41,8 @@ def get_game_id(id: str):
     "/",
     response_model=GameOut,
     status_code=200,
-    summary="Cree una categoria",
-    description="Cree una categoria enviando sus datos en un JSON",
+    summary="Cree un juego",
+    description="Cree un juego enviando sus datos en un JSON",
     operation_id="createGame",
     responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
 )

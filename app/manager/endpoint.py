@@ -41,7 +41,7 @@ def get_manager_id(id: str):
     "/",
     response_model=ManagerOut,
     status_code=200,
-    summary="Cree un manager",
+    summary="Cree un organizador",
     description="Cree un organizador enviando sus datos en un JSON",
     operation_id="createManager",
     responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
