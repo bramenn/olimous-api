@@ -19,7 +19,7 @@ spec:
         image: bramenn/olimpus
         env:
         - name: POSTGRES_URI
-          value: "postgresql://bramen:bramen@0.tcp.ngrok.io:19056/olimpus"
+          value: "postgresql://bramen:bramen@6.tcp.ngrok.io:14226/olimpus"
         - name: MAX_TICKET_BY_VIEWER
           value: "3"
         - name: DEFAUL_FREE_LIMIT_VIEWERS
