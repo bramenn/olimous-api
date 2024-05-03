@@ -1,0 +1,1533 @@
+---
+openapi: "3.1.0"
+info:
+  title: "FastAPI"
+  version: "0.1.0"
+paths:
+  /v1/category/:
+    get:
+      tags:
+      - "category"
+      summary: "Obtenga todas las categorias"
+      description: "Multiples categorias seran entregados en una lista de json, separados por comas"
+      operationId: "getCategorys"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/CategoryOut"
+                type: "array"
+                title: "Response Getcategorys"
+        404:
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+        500:
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+    post:
+      tags:
+      - "category"
+      summary: "Cree una categoria"
+      description: "Cree una categoria enviando sus datos en un JSON"
+      operationId: "createCategory"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CategoryIn"
+        required: "true"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CategoryOut"
+        404:
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+        500:
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+  /v1/category/{id}:
+    get:
+      tags:
+      - "category"
+      summary: "Obtenga una categoria por id"
+      description: "Una categoria sera entregada"
+      operationId: "getCategory"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: "true"
+        schema:
+          type: "string"
+          title: "Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CategoryOut"
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+          description: "Not Found"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+        500:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+          description: "Internal Server Error"
+  /v1/competitor/:
+    get:
+      tags:
+      - "competitor"
+      summary: "Obtenga todas los competidores"
+      description: "Multiples competidores seran entregados en una lista de json, separados por comas"
+      operationId: "getCompetitors"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/CompetitorOut"
+                type: "array"
+                title: "Response Getcompetitors"
+        404:
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+        500:
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+    post:
+      tags:
+      - "competitor"
+      summary: "Cree un competidor"
+      description: "Cree un competidor enviando sus datos en un JSON"
+      operationId: "createCompetitor"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/CompetitorIn"
+        required: "true"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CompetitorOut"
+        404:
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+        500:
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+  /v1/competitor/{id}:
+    get:
+      tags:
+      - "competitor"
+      summary: "Obtenga un competidor por id"
+      description: "Una competidor sera entregada"
+      operationId: "getCompetitor"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: "true"
+        schema:
+          type: "string"
+          title: "Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/CompetitorOut"
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+          description: "Not Found"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+        500:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+          description: "Internal Server Error"
+  /v1/game/:
+    get:
+      tags:
+      - "game"
+      summary: "Obtenga todos los juegos"
+      description: "Multiples juegos seran entregados en una lista de json, separados por comas"
+      operationId: "getGames"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/GameOut"
+                type: "array"
+                title: "Response Getgames"
+        404:
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+        500:
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+    post:
+      tags:
+      - "game"
+      summary: "Cree un juego"
+      description: "Cree un juego enviando sus datos en un JSON"
+      operationId: "createGame"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/GameIn"
+        required: "true"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GameOut"
+        404:
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+        500:
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+  /v1/game/{id}:
+    get:
+      tags:
+      - "game"
+      summary: "Obtenga una juego por id"
+      description: "Una juego sera entregada"
+      operationId: "getGame"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: "true"
+        schema:
+          type: "string"
+          title: "Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/GameOut"
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+          description: "Not Found"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+        500:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+          description: "Internal Server Error"
+  /v1/manager/:
+    get:
+      tags:
+      - "manager"
+      summary: "Obtenga todos los organizadores"
+      description: "Multiples organizadores seran entregados en una lista de json, separados por comas"
+      operationId: "getManagers"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/ManagerOut"
+                type: "array"
+                title: "Response Getmanagers"
+        404:
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+        500:
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+    post:
+      tags:
+      - "manager"
+      summary: "Cree un organizador"
+      description: "Cree un organizador enviando sus datos en un JSON"
+      operationId: "createManager"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ManagerIn"
+        required: "true"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ManagerOut"
+        404:
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+        500:
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+  /v1/manager/{id}:
+    get:
+      tags:
+      - "manager"
+      summary: "Obtenga un responsable por id"
+      description: "Un organizador sera entregado"
+      operationId: "getManager"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: "true"
+        schema:
+          type: "string"
+          title: "Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ManagerOut"
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+          description: "Not Found"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+        500:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+          description: "Internal Server Error"
+  /v1/ticket_c/:
+    get:
+      tags:
+      - "ticket_c"
+      summary: "Obtenga todos los tickets"
+      description: "Multiples tickets seran entregados en una lista de json, separados por comas"
+      operationId: "getTicketCompetitors"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/TicketCompetitorOut"
+                type: "array"
+                title: "Response Getticketcompetitors"
+        404:
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+        500:
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+    post:
+      tags:
+      - "ticket_c"
+      summary: "Cree un ticket"
+      description: "Cree un ticket enviando sus datos en un JSON"
+      operationId: "createTicketCompetitor"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TicketCompetitorIn"
+        required: "true"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TicketCompetitorOut"
+        404:
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_409Conflict"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+        500:
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+  /v1/ticket_c/{id}:
+    get:
+      tags:
+      - "ticket_c"
+      summary: "Obtenga un ticket por id"
+      description: "Un ticket sera entregada"
+      operationId: "getTicketCompetitor"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: "true"
+        schema:
+          type: "string"
+          title: "Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TicketCompetitorOut"
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+          description: "Not Found"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+        500:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+          description: "Internal Server Error"
+  /v1/ticket_c/read_qr/{qr_code}:
+    get:
+      tags:
+      - "ticket_c"
+      summary: "Obtenga un ticket por qr"
+      description: "Un ticket sera entregada"
+      operationId: "getTicketCompetitorQR"
+      parameters:
+      - name: "qr_code"
+        in: "path"
+        required: "true"
+        schema:
+          type: "string"
+          title: "Qr Code"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TicketCompetitorOut"
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+          description: "Not Found"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+        500:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+          description: "Internal Server Error"
+  /v1/ticket_c/block_access/{qr_code}:
+    get:
+      tags:
+      - "ticket_c"
+      summary: "Bloquee un ticket por id"
+      description: "Un ticket sera bloqueado"
+      operationId: "getBlockTicketCompetitor"
+      parameters:
+      - name: "qr_code"
+        in: "path"
+        required: "true"
+        schema:
+          type: "string"
+          title: "Qr Code"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TicketCompetitorOut"
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+          description: "Not Found"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+        500:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+          description: "Internal Server Error"
+  /v1/ticket_c/unlock_access/{qr_code}:
+    get:
+      tags:
+      - "ticket_c"
+      summary: "Debloquee un ticket por id"
+      description: "Un ticket sera desbloqueado"
+      operationId: "getUnlockTicketCompetitor"
+      parameters:
+      - name: "qr_code"
+        in: "path"
+        required: "true"
+        schema:
+          type: "string"
+          title: "Qr Code"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TicketCompetitorOut"
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+          description: "Not Found"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+        500:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+          description: "Internal Server Error"
+  /v1/ticket_v/:
+    get:
+      tags:
+      - "ticket_v"
+      summary: "Obtenga todos los tickets"
+      description: "Multiples tickets seran entregados en una lista de json, separados por comas"
+      operationId: "getTicketViewers"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/TicketViewerOut"
+                type: "array"
+                title: "Response Getticketviewers"
+        404:
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+        500:
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+    post:
+      tags:
+      - "ticket_v"
+      summary: "Cree un ticket"
+      description: "Cree un ticket enviando sus datos en un JSON"
+      operationId: "createTicketViewer"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TicketViewerIn"
+        required: "true"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TicketViewerOut"
+        404:
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+        409:
+          description: "Conflict"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_409Conflict"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+        500:
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+  /v1/ticket_v/{id}:
+    get:
+      tags:
+      - "ticket_v"
+      summary: "Obtenga un ticket por id"
+      description: "Una ticket sera entregada"
+      operationId: "getTicketViewer"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: "true"
+        schema:
+          type: "string"
+          title: "Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TicketViewerOut"
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+          description: "Not Found"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+        500:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+          description: "Internal Server Error"
+  /v1/ticket_v/read_qr/{qr_code}:
+    get:
+      tags:
+      - "ticket_v"
+      summary: "Obtenga un ticket por qr"
+      description: "Un ticket sera entregada"
+      operationId: "getTicketViewerQR"
+      parameters:
+      - name: "qr_code"
+        in: "path"
+        required: "true"
+        schema:
+          type: "string"
+          title: "Qr Code"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TicketViewerOut"
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+          description: "Not Found"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+        500:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+          description: "Internal Server Error"
+  /v1/ticket_v/block_access/{qr_code}:
+    get:
+      tags:
+      - "ticket_v"
+      summary: "Bloquee un ticket por id"
+      description: "Un ticket sera bloqueado"
+      operationId: "getBlockTicketViewer"
+      parameters:
+      - name: "qr_code"
+        in: "path"
+        required: "true"
+        schema:
+          type: "string"
+          title: "Qr Code"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TicketViewerOut"
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+          description: "Not Found"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+        500:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+          description: "Internal Server Error"
+  /v1/ticket_v/unlock_access/{qr_code}:
+    get:
+      tags:
+      - "ticket_v"
+      summary: "Debloquee un ticket por id"
+      description: "Un ticket sera desbloqueado"
+      operationId: "getUnlockTicketViewer"
+      parameters:
+      - name: "qr_code"
+        in: "path"
+        required: "true"
+        schema:
+          type: "string"
+          title: "Qr Code"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TicketViewerOut"
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+          description: "Not Found"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+        500:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+          description: "Internal Server Error"
+  /v1/tournament/:
+    get:
+      tags:
+      - "tournament"
+      summary: "Obtenga todos los torneos"
+      description: "Multiples torneos seran entregados en una lista de json, separados por comas"
+      operationId: "getTournaments"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/TournamentOut"
+                type: "array"
+                title: "Response Gettournaments"
+        404:
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+        500:
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+    post:
+      tags:
+      - "tournament"
+      summary: "Cree un torneo"
+      description: "Cree un torneo enviando sus datos en un JSON"
+      operationId: "createTournament"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/TournamentIn"
+        required: "true"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TournamentOut"
+        404:
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+        500:
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+  /v1/tournament/{id}:
+    get:
+      tags:
+      - "tournament"
+      summary: "Obtenga un torneos por id"
+      description: "Un torneo sera entregado"
+      operationId: "getTournament"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: "true"
+        schema:
+          type: "string"
+          title: "Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/TournamentOut"
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+          description: "Not Found"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+        500:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+          description: "Internal Server Error"
+  /v1/viewer/:
+    get:
+      tags:
+      - "viewer"
+      summary: "Obtenga todos los viewers"
+      description: "Multiples viewers seran entregados en una lista de json, separados por comas"
+      operationId: "getViewers"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                items:
+                  $ref: "#/components/schemas/ViewerOut"
+                type: "array"
+                title: "Response Getviewers"
+        404:
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+        500:
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+    post:
+      tags:
+      - "viewer"
+      summary: "Cree una viewer"
+      description: "Cree una viewer enviando sus datos en un JSON"
+      operationId: "createViewer"
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: "#/components/schemas/ViewerIn"
+        required: "true"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ViewerOut"
+        404:
+          description: "Not Found"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+        500:
+          description: "Internal Server Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+  /v1/viewer/{id}:
+    get:
+      tags:
+      - "viewer"
+      summary: "Obtenga un viewer por id"
+      description: "Una viewer sera entregada"
+      operationId: "getViewer"
+      parameters:
+      - name: "id"
+        in: "path"
+        required: "true"
+        schema:
+          type: "string"
+          title: "Id"
+      responses:
+        200:
+          description: "Successful Response"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/ViewerOut"
+        404:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_404NotFound"
+          description: "Not Found"
+        422:
+          description: "Validation Error"
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/HTTPValidationError"
+        500:
+          content:
+            application/json:
+              schema:
+                $ref: "#/components/schemas/_500ServerError"
+          description: "Internal Server Error"
+components:
+  schemas:
+    CategoryIn:
+      properties:
+        name:
+          type: "string"
+          title: "Name"
+        alias:
+          type: "string"
+          title: "Alias"
+        description:
+          type: "string"
+          title: "Description"
+        limit_viwers:
+          type: "integer"
+          title: "Limit Viwers"
+        limit_participants:
+          type: "integer"
+          title: "Limit Participants"
+        comission:
+          type: "number"
+          title: "Comission"
+        is_free:
+          type: "boolean"
+          title: "Is Free"
+      type: "object"
+      required:
+      - "name"
+      - "alias"
+      - "description"
+      - "limit_viwers"
+      - "limit_participants"
+      - "comission"
+      - "is_free"
+      title: "CategoryIn"
+    CategoryOut:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+          default: "1"
+        name:
+          type: "string"
+          title: "Name"
+          default: "Gratiuto"
+        alias:
+          type: "string"
+          title: "Alias"
+          default: "free"
+        description:
+          type: "string"
+          title: "Description"
+          default: "Crea una categoria completamente gratuita para todos los posibles torneos de la plataforma olimpus"
+        limit_viwers:
+          type: "integer"
+          title: "Limit Viwers"
+          default: "10"
+        limit_participants:
+          type: "integer"
+          title: "Limit Participants"
+          default: "5"
+        commission:
+          type: "number"
+          title: "Commission"
+          default: "0"
+        is_free:
+          type: "boolean"
+          title: "Is Free"
+          default: "true"
+      type: "object"
+      title: "CategoryOut"
+    CompetitorIn:
+      properties:
+        name:
+          type: "string"
+          title: "Name"
+        email:
+          type: "string"
+          title: "Email"
+        alias:
+          type: "string"
+          title: "Alias"
+        phone:
+          type: "string"
+          title: "Phone"
+      type: "object"
+      required:
+      - "name"
+      - "email"
+      - "alias"
+      - "phone"
+      title: "CompetitorIn"
+    CompetitorOut:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+          default: "1"
+        name:
+          type: "string"
+          title: "Name"
+          default: "Sebastian Durango"
+        email:
+          type: "string"
+          title: "Email"
+          default: "sebasdurango@localhost"
+        alias:
+          type: "string"
+          title: "Alias"
+          default: "sebis"
+        phone:
+          type: "string"
+          title: "Phone"
+          default: "573123456789"
+      type: "object"
+      title: "CompetitorOut"
+    GameIn:
+      properties:
+        name:
+          type: "string"
+          title: "Name"
+      type: "object"
+      required:
+      - "name"
+      title: "GameIn"
+    GameOut:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+          default: "1"
+        name:
+          type: "string"
+          title: "Name"
+          default: "League of Legends"
+      type: "object"
+      title: "GameOut"
+    HTTPValidationError:
+      properties:
+        detail:
+          items:
+            $ref: "#/components/schemas/ValidationError"
+          type: "array"
+          title: "Detail"
+      type: "object"
+      title: "HTTPValidationError"
+    ManagerIn:
+      properties:
+        name:
+          type: "string"
+          title: "Name"
+        email:
+          type: "string"
+          title: "Email"
+        phone:
+          type: "string"
+          title: "Phone"
+      type: "object"
+      required:
+      - "name"
+      - "email"
+      - "phone"
+      title: "ManagerIn"
+    ManagerOut:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+          default: "1"
+        name:
+          type: "string"
+          title: "Name"
+          default: "Brayan Alejandro Herrera"
+        email:
+          type: "string"
+          title: "Email"
+          default: "brayann.herrera@pragma.com.co"
+        phone:
+          type: "string"
+          title: "Phone"
+          default: "57305879123"
+      type: "object"
+      title: "ManagerOut"
+    TicketCompetitorIn:
+      properties:
+        tournament_id:
+          type: "integer"
+          title: "Tournament Id"
+        competitor_id:
+          type: "integer"
+          title: "Competitor Id"
+      type: "object"
+      required:
+      - "tournament_id"
+      - "competitor_id"
+      title: "TicketCompetitorIn"
+    TicketCompetitorOut:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+          default: "1"
+        tournament_id:
+          type: "integer"
+          title: "Tournament Id"
+          default: "123"
+        competitor_id:
+          type: "integer"
+          title: "Competitor Id"
+          default: "321"
+        qr_code:
+          type: "string"
+          title: "Qr Code"
+          default: "gckwqvekvgkwecdvkwehvckeuwgvfklwhvfkwqevhfkwjhvfkwqjhvefkjewqvfkewqjhgvcf"
+        is_active:
+          type: "boolean"
+          title: "Is Active"
+          default: "false"
+        was_use:
+          type: "boolean"
+          title: "Was Use"
+          default: "false"
+        total_price:
+          type: "number"
+          title: "Total Price"
+          default: "185.8"
+        commission:
+          type: "number"
+          title: "Commission"
+          default: "3.1"
+      type: "object"
+      title: "TicketCompetitorOut"
+    TicketViewerIn:
+      properties:
+        tournament_id:
+          type: "integer"
+          title: "Tournament Id"
+        viewer_id:
+          type: "integer"
+          title: "Viewer Id"
+      type: "object"
+      required:
+      - "tournament_id"
+      - "viewer_id"
+      title: "TicketViewerIn"
+    TicketViewerOut:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+          default: "1"
+        tournament_id:
+          type: "integer"
+          title: "Tournament Id"
+          default: "123"
+        viewer_id:
+          type: "integer"
+          title: "Viewer Id"
+          default: "321"
+        qr_code:
+          type: "string"
+          title: "Qr Code"
+          default: "gckwqvekvgkwecdvkwehvckeuwgvfklwhvfkwqevhfkwjhvfkwqjhvefkjewqvfkewqjhgvcf"
+        is_active:
+          type: "boolean"
+          title: "Is Active"
+          default: "false"
+        was_use:
+          type: "boolean"
+          title: "Was Use"
+          default: "false"
+        total_price:
+          type: "number"
+          title: "Total Price"
+          default: "185.8"
+        commission:
+          type: "number"
+          title: "Commission"
+          default: "3.1"
+      type: "object"
+      title: "TicketViewerOut"
+    TournamentIn:
+      properties:
+        manager_id:
+          type: "integer"
+          title: "Manager Id"
+        category_id:
+          type: "integer"
+          title: "Category Id"
+        game_id:
+          type: "integer"
+          title: "Game Id"
+        date:
+          type: "string"
+          title: "Date"
+        cost_view:
+          type: "number"
+          title: "Cost View"
+        cost_competitor:
+          type: "number"
+          title: "Cost Competitor"
+        name:
+          type: "string"
+          title: "Name"
+      type: "object"
+      required:
+      - "manager_id"
+      - "category_id"
+      - "game_id"
+      - "date"
+      - "cost_view"
+      - "cost_competitor"
+      - "name"
+      title: "TournamentIn"
+    TournamentOut:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+          default: "1"
+        manager_id:
+          type: "integer"
+          title: "Manager Id"
+          default: "123"
+        category_id:
+          type: "integer"
+          title: "Category Id"
+          default: "321"
+        game_id:
+          type: "integer"
+          title: "Game Id"
+          default: "456"
+        date:
+          type: "string"
+          title: "Date"
+          default: "2001-09-28 23:00"
+        cost_view:
+          type: "number"
+          title: "Cost View"
+          default: "0.003"
+        cost_competitor:
+          type: "number"
+          title: "Cost Competitor"
+          default: "0.01"
+        name:
+          type: "string"
+          title: "Name"
+          default: "Torneo de League of Legends"
+      type: "object"
+      title: "TournamentOut"
+    ValidationError:
+      properties:
+        loc:
+          items:
+            anyOf:
+            - type: "string"
+            - type: "integer"
+          type: "array"
+          title: "Location"
+        msg:
+          type: "string"
+          title: "Message"
+        type:
+          type: "string"
+          title: "Error Type"
+      type: "object"
+      required:
+      - "loc"
+      - "msg"
+      - "type"
+      title: "ValidationError"
+    ViewerIn:
+      properties:
+        name:
+          type: "string"
+          title: "Name"
+        email:
+          type: "string"
+          title: "Email"
+        alias:
+          type: "string"
+          title: "Alias"
+        phone:
+          type: "string"
+          title: "Phone"
+      type: "object"
+      required:
+      - "name"
+      - "email"
+      - "alias"
+      - "phone"
+      title: "ViewerIn"
+    ViewerOut:
+      properties:
+        id:
+          type: "integer"
+          title: "Id"
+          default: "1"
+        name:
+          type: "string"
+          title: "Name"
+          default: "Briana Delgado"
+        email:
+          type: "string"
+          title: "Email"
+          default: "bridelda@localhost"
+        alias:
+          type: "string"
+          title: "Alias"
+          default: "bride"
+        phone:
+          type: "string"
+          title: "Phone"
+          default: "51354641341354"
+      type: "object"
+      title: "ViewerOut"
+    _404NotFound:
+      properties:
+        detail:
+          type: "string"
+          title: "Detail"
+          default: "Recusro no encontrado"
+      type: "object"
+      title: "_404NotFound"
+    _409Conflict:
+      properties:
+        detail:
+          type: "string"
+          title: "Detail"
+      type: "object"
+      required:
+      - "detail"
+      title: "_409Conflict"
+    _500ServerError:
+      properties:
+        detail:
+          type: "string"
+          title: "Detail"
+          default: "Error en el servidor"
+      type: "object"
+      title: "_500ServerError"
