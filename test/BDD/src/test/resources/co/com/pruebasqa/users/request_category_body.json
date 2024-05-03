@@ -1,0 +1,9 @@
+{
+    "name": "Semi-Gratiuto",
+    "alias": "free-pay",
+    "description": "Categoria para crear torneos con comision y sin limite de viwers y participantes",
+    "limit_viwers": -1,
+    "limit_participants": -1,
+    "comission": 0,
+    "is_free": true
+  }
