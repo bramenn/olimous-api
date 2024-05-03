@@ -13,8 +13,8 @@ router = APIRouter()
     "/",
     response_model=List[ViewerOut],
     status_code=200,
-    summary="Obtenga todas las categorias",
-    description="Multiples categorias seran entregados en una lista de json, separados por comas ",
+    summary="Obtenga todos los viewers",
+    description="Multiples viewers seran entregados en una lista de json, separados por comas ",
     operation_id="getViewers",
     responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
 )
@@ -27,8 +27,8 @@ def get_all_viewers():
     "/{id}",
     response_model=ViewerOut,
     status_code=200,
-    summary="Obtenga una categoria por id",
-    description="Una categoria sera entregada",
+    summary="Obtenga un viewer por id",
+    description="Una viewer sera entregada",
     operation_id="getViewer",
     responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
 )
@@ -41,8 +41,8 @@ def get_viewer_id(id: str):
     "/",
     response_model=ViewerOut,
     status_code=200,
-    summary="Cree una categoria",
-    description="Cree una categoria enviando sus datos en un JSON",
+    summary="Cree una viewer",
+    description="Cree una viewer enviando sus datos en un JSON",
     operation_id="createViewer",
     responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
 )

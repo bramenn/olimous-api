@@ -13,8 +13,8 @@ router = APIRouter()
     "/",
     response_model=List[CompetitorOut],
     status_code=200,
-    summary="Obtenga todas las categorias",
-    description="Multiples categorias seran entregados en una lista de json, separados por comas ",
+    summary="Obtenga todas los competidores",
+    description="Multiples competidores seran entregados en una lista de json, separados por comas ",
     operation_id="getCompetitors",
     responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
 )
@@ -27,8 +27,8 @@ def get_all_competitors():
     "/{id}",
     response_model=CompetitorOut,
     status_code=200,
-    summary="Obtenga una categoria por id",
-    description="Una categoria sera entregada",
+    summary="Obtenga un competidor por id",
+    description="Una competidor sera entregada",
     operation_id="getCompetitor",
     responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
 )
@@ -41,8 +41,8 @@ def get_competitor_id(id: str):
     "/",
     response_model=CompetitorOut,
     status_code=200,
-    summary="Cree una categoria",
-    description="Cree una categoria enviando sus datos en un JSON",
+    summary="Cree un competidor",
+    description="Cree un competidor enviando sus datos en un JSON",
     operation_id="createCompetitor",
     responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
 )

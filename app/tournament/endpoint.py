@@ -13,8 +13,8 @@ router = APIRouter()
     "/",
     response_model=List[TournamentOut],
     status_code=200,
-    summary="Obtenga todas las categorias",
-    description="Multiples categorias seran entregados en una lista de json, separados por comas ",
+    summary="Obtenga todos los torneos",
+    description="Multiples torneos seran entregados en una lista de json, separados por comas ",
     operation_id="getTournaments",
     responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
 )
@@ -27,8 +27,8 @@ def get_all_tournaments():
     "/{id}",
     response_model=TournamentOut,
     status_code=200,
-    summary="Obtenga una categoria por id",
-    description="Una categoria sera entregada",
+    summary="Obtenga un torneos por id",
+    description="Un torneo sera entregado",
     operation_id="getTournament",
     responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
 )
@@ -41,8 +41,8 @@ def get_tournament_id(id: str):
     "/",
     response_model=TournamentOut,
     status_code=200,
-    summary="Cree una categoria",
-    description="Cree una categoria enviando sus datos en un JSON",
+    summary="Cree un torneo",
+    description="Cree un torneo enviando sus datos en un JSON",
     operation_id="createTournament",
     responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
 )

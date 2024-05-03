@@ -21,8 +21,8 @@ templates = Jinja2Templates(directory="templates")
     "/",
     response_model=List[TicketViewerOut],
     status_code=200,
-    summary="Obtenga todas las categorias",
-    description="Multiples categorias seran entregados en una lista de json, separados por comas ",
+    summary="Obtenga todos los tickets",
+    description="Multiples tickets seran entregados en una lista de json, separados por comas ",
     operation_id="getTicketViewers",
     responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
 )
@@ -35,8 +35,8 @@ def get_all_ticket_viewers():
     "/{id}",
     response_model=TicketViewerOut,
     status_code=200,
-    summary="Obtenga una categoria por id",
-    description="Una categoria sera entregada",
+    summary="Obtenga un ticket por id",
+    description="Una ticket sera entregada",
     operation_id="getTicketViewer",
     responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
 )
@@ -49,9 +49,9 @@ def get_ticket_viewer_id(id: str):
     "/read_qr/{qr_code}",
     response_model=TicketViewerOut,
     status_code=200,
-    summary="Obtenga una categoria por id",
-    description="Una categoria sera entregada",
-    operation_id="getTicketViewer",
+    summary="Obtenga un ticket por qr",
+    description="Un ticket sera entregada",
+    operation_id="getTicketViewerQR",
     responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
 )
 def get_ticket_viewer_id(qr_code: str):
@@ -63,9 +63,9 @@ def get_ticket_viewer_id(qr_code: str):
     "/block_access/{qr_code}",
     response_model=TicketViewerOut,
     status_code=200,
-    summary="Obtenga una categoria por id",
-    description="Una categoria sera entregada",
-    operation_id="getTicketViewer",
+    summary="Bloquee un ticket por id",
+    description="Un ticket sera bloqueado",
+    operation_id="getBlockTicketViewer",
     responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
 )
 def get_ticket_viewer_id(qr_code: str):
@@ -77,9 +77,9 @@ def get_ticket_viewer_id(qr_code: str):
     "/unlock_access/{qr_code}",
     response_model=TicketViewerOut,
     status_code=200,
-    summary="Obtenga una categoria por id",
-    description="Una categoria sera entregada",
-    operation_id="getTicketViewer",
+    summary="Debloquee un ticket por id",
+    description="Un ticket sera desbloqueado",
+    operation_id="getUnlockTicketViewer",
     responses={404: {"model": _404NotFound}, 500: {"model": _500ServerError}},
 )
 def get_ticket_viewer_id(qr_code: str):
@@ -91,8 +91,8 @@ def get_ticket_viewer_id(qr_code: str):
     "/",
     response_model=TicketViewerOut,
     status_code=200,
-    summary="Cree una categoria",
-    description="Cree una categoria enviando sus datos en un JSON",
+    summary="Cree un ticket",
+    description="Cree un ticket enviando sus datos en un JSON",
     operation_id="createTicketViewer",
     responses={
         404: {"model": _404NotFound},

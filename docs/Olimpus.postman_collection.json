@@ -1,0 +1,959 @@
+{
+	"info": {
+		"_postman_id": "d4132c03-eb25-4775-93bb-bd6d96f846ec",
+		"name": "Olimpus",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "30508803"
+	},
+	"item": [
+		{
+			"name": "Manager",
+			"item": [
+				{
+					"name": "Obtener manager por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/manager/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"manager",
+								"1"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtener manager por id",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/manager/1",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"manager",
+										"1"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Wed, 01 May 2024 13:40:18 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "111"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 1,\n    \"name\": \"Brayan Alejandro Herrera Amariles\",\n    \"email\": \"brayanherrera540@gmail.com\",\n    \"phone\": \"573058790290\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Obtener todos los managers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/manager",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"manager"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Obtener todos los managers",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/manager",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"manager"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Wed, 01 May 2024 13:40:37 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "310"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n    {\n        \"id\": 1,\n        \"name\": \"Brayan Alejandro Herrera Amariles\",\n        \"email\": \"brayanherrera540@gmail.com\",\n        \"phone\": \"573058790290\"\n    },\n    {\n        \"id\": 2,\n        \"name\": \"Monica Alejandra Largo Calvo\",\n        \"email\": \"monicalargo@gmail.com\",\n        \"phone\": \"57123456789\"\n    },\n    {\n        \"id\": 3,\n        \"name\": \"Alvaro Andres Clavijo\",\n        \"email\": \"alvaroclavijo@gmail.com\",\n        \"phone\": \"57123456789\"\n    }\n]"
+						}
+					]
+				},
+				{
+					"name": "Crear un manager",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Monica Alejandra Largo Calvo\",\r\n  \"email\": \"monicalargo@gmail.com\",\r\n  \"phone\": \"57123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/manager",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"manager"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear un manager",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"name\": \"Monica Alejandra Largo Calvo\",\r\n  \"email\": \"monicalargo@gmail.com\",\r\n  \"phone\": \"57123456789\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/manager",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"manager"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "date",
+									"value": "Wed, 01 May 2024 13:40:41 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "100"
+								},
+								{
+									"key": "content-type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"id\": 4,\n    \"name\": \"Monica Alejandra Largo Calvo\",\n    \"email\": \"monicalargo@gmail.com\",\n    \"phone\": \"57123456789\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Category",
+			"item": [
+				{
+					"name": "Obtener categoria por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/category/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"category",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todos las categorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/category",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear una categoria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Semi-Gratiuto\",\r\n  \"alias\": \"free-pay\",\r\n  \"description\": \"Categoria para crear torneos con comision y sin limite de viwers y participantes\",\r\n  \"limit_viwers\": -1,\r\n  \"limit_participants\": -1,\r\n  \"comission\": 0,\r\n  \"is_free\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/category",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"category"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Competitor",
+			"item": [
+				{
+					"name": "Obtener competidor por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/competitor/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"competitor",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todos los competidores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/competitor",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"competitor"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear una categoria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Lee Sang-hyeok\",\r\n  \"email\": \"faker@hideonbush.com\",\r\n  \"alias\": \"Faker\",\r\n  \"phone\": \"573123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/competitor",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"competitor"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Game",
+			"item": [
+				{
+					"name": "Obtener game por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/game/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"game",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todos los games",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/game",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"game"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear una categoria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"League of Legends\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/game",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"game"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Viewer",
+			"item": [
+				{
+					"name": "Obtener viewer por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/viewer/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"viewer",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todos los viewers",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/viewer",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"viewer"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear una viewer",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Mario Mondongo\",\r\n  \"email\": \"mariom@localhost.com\",\r\n  \"alias\": \"mamon\",\r\n  \"phone\": \"573123456789\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/viewer",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"viewer"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ticket competitor",
+			"item": [
+				{
+					"name": "Obtener ticket_c por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/ticket_c/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"ticket_c",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todos los tickets_c",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/ticket_c",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"ticket_c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bloquear ticket_c por qr_code",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/ticket_c/block_access/1-1-abdb937b-e442-4184-ac5e-e9b36b288111",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"ticket_c",
+								"block_access",
+								"1-1-abdb937b-e442-4184-ac5e-e9b36b288111"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desbloquear ticket_c por qr_code Copy",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/ticket_c/unlock_access/1-1-abdb937b-e442-4184-ac5e-e9b36b288111",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"ticket_c",
+								"unlock_access",
+								"1-1-abdb937b-e442-4184-ac5e-e9b36b288111"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear una ticket_c",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>ID del Ticket</th>\r",
+									"        <th>Nombre del Torneo</th>\r",
+									"        <th>Nombre del Usuario</th>\r",
+									"    </tr>\r",
+									"    <tr>\r",
+									"        <td>{{ticket_id}}</td>\r",
+									"        <td>{tournament_name}</td>\r",
+									"        <td>{user_name}</td>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    var responseBody = pm.response.text();\r",
+									"    var ticketId = responseBody.match(/<p><strong>ID del Ticket:<\\/strong> (.+?)<\\/p>/)[1];\r",
+									"    var tournamentName = responseBody.match(/<p><strong>Nombre del Torneo:<\\/strong> (.+?)<\\/p>/)[1];\r",
+									"    var userName = responseBody.match(/<p><strong>Nombre del Usuario:<\\/strong> (.+?)<\\/p>/)[1];\r",
+									"\r",
+									"    return { ticket_id: ticketId, tournament_name: tournamentName, user_name: userName };\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tournament_id\": 1,\r\n  \"competitor_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/ticket_c",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"ticket_c"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear una viewer",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"tournament_id\": 1,\r\n  \"competitor_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/ticket_c",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"ticket_c"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "date",
+									"value": "Wed, 01 May 2024 15:00:23 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "1401"
+								},
+								{
+									"key": "content-type",
+									"value": "text/html; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "<!DOCTYPE html>\n<html lang=\"es\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n        <title>Ticket de Torneo 1</title>\n        <style>\n        body {\n            font-family: Arial, sans-serif;\n            margin: 0;\n            padding: 0;\n            background-color: #f4f4f4;\n            text-align: center;\n        }\n        .ticket {\n            background-color: #ee9292;\n            width: 300px;\n            margin: 20px auto;\n            padding: 20px;\n            border-radius: 10px;\n            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n        }\n        h1 {\n            color: #333;\n        }\n        p {\n            color: #666;\n        }\n        .qr-code {\n            margin-top: 20px;\n        }\n    </style>\n    </head>\n    <body>\n        <div class=\"ticket\">\n            <h1>Ticket de Torneo 1</h1>\n            <p>\n                <strong>ID del Ticket:</strong> #1\n            </p>\n            <p>\n                <strong>Nombre del Torneo:</strong> 1\n            </p>\n            <p>\n                <strong>Nombre del Usuario:</strong> 1\n            </p>\n            <div class=\"qr-code\">\n                <img id='barcode' \n                src=\"https://api.qrserver.com/v1/create-qr-code/?data=http://0.0.0.0/v1/ticket_c/read_qr/1-1-11b0b7c4-bddd-416c-8608-5ec17e903415&amp;size=1000x1000\" \n                alt=\"\" \n                title=\"HELLO\" \n                width=\"150\" \n                height=\"150\" />\n            </div>\n        </div>\n    </body>\n</html>"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Ticket viewer",
+			"item": [
+				{
+					"name": "Obtener ticket_v por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/ticket_v/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"ticket_v",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Bloquear ticket_v por qr_code",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/ticket_v/block_access/1-1-009e1cf2-5a0e-425c-afb5-93ae39824e9f",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"ticket_v",
+								"block_access",
+								"1-1-009e1cf2-5a0e-425c-afb5-93ae39824e9f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Desbloquear ticket_v por qr_code",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/ticket_v/unlock_access/1-1-009e1cf2-5a0e-425c-afb5-93ae39824e9f",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"ticket_v",
+								"unlock_access",
+								"1-1-009e1cf2-5a0e-425c-afb5-93ae39824e9f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todos los tickets_v",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/ticket_v",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"ticket_v"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear una ticket_v",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var template = `\r",
+									"<style type=\"text/css\">\r",
+									"    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}\r",
+									"    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}\r",
+									"    .tftable tr {background-color:#ffffff;}\r",
+									"    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}\r",
+									"    .tftable tr:hover {background-color:#e0ffff;}\r",
+									"</style>\r",
+									"\r",
+									"<table class=\"tftable\" border=\"1\">\r",
+									"    <tr>\r",
+									"        <th>ID del Ticket</th>\r",
+									"        <th>Nombre del Torneo</th>\r",
+									"        <th>Nombre del Usuario</th>\r",
+									"    </tr>\r",
+									"    <tr>\r",
+									"        <td>{{ticket_id}}</td>\r",
+									"        <td>{tournament_name}</td>\r",
+									"        <td>{user_name}</td>\r",
+									"    </tr>\r",
+									"</table>\r",
+									"`;\r",
+									"\r",
+									"function constructVisualizerPayload() {\r",
+									"    var responseBody = pm.response.text();\r",
+									"    var ticketId = responseBody.match(/<p><strong>ID del Ticket:<\\/strong> (.+?)<\\/p>/)[1];\r",
+									"    var tournamentName = responseBody.match(/<p><strong>Nombre del Torneo:<\\/strong> (.+?)<\\/p>/)[1];\r",
+									"    var userName = responseBody.match(/<p><strong>Nombre del Usuario:<\\/strong> (.+?)<\\/p>/)[1];\r",
+									"\r",
+									"    return { ticket_id: ticketId, tournament_name: tournamentName, user_name: userName };\r",
+									"}\r",
+									"\r",
+									"pm.visualizer.set(template, constructVisualizerPayload());"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"tournament_id\": 1,\r\n  \"viewer_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/ticket_v",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"ticket_v"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Crear una viewer",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"tournament_id\": 1,\r\n  \"competitor_id\": 1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{base_url}}/ticket_c",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"ticket_c"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "html",
+							"header": [
+								{
+									"key": "date",
+									"value": "Wed, 01 May 2024 15:00:23 GMT"
+								},
+								{
+									"key": "server",
+									"value": "uvicorn"
+								},
+								{
+									"key": "content-length",
+									"value": "1401"
+								},
+								{
+									"key": "content-type",
+									"value": "text/html; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "<!DOCTYPE html>\n<html lang=\"es\">\n    <head>\n        <meta charset=\"UTF-8\">\n        <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">\n        <title>Ticket de Torneo 1</title>\n        <style>\n        body {\n            font-family: Arial, sans-serif;\n            margin: 0;\n            padding: 0;\n            background-color: #f4f4f4;\n            text-align: center;\n        }\n        .ticket {\n            background-color: #ee9292;\n            width: 300px;\n            margin: 20px auto;\n            padding: 20px;\n            border-radius: 10px;\n            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);\n        }\n        h1 {\n            color: #333;\n        }\n        p {\n            color: #666;\n        }\n        .qr-code {\n            margin-top: 20px;\n        }\n    </style>\n    </head>\n    <body>\n        <div class=\"ticket\">\n            <h1>Ticket de Torneo 1</h1>\n            <p>\n                <strong>ID del Ticket:</strong> #1\n            </p>\n            <p>\n                <strong>Nombre del Torneo:</strong> 1\n            </p>\n            <p>\n                <strong>Nombre del Usuario:</strong> 1\n            </p>\n            <div class=\"qr-code\">\n                <img id='barcode' \n                src=\"https://api.qrserver.com/v1/create-qr-code/?data=http://0.0.0.0/v1/ticket_c/read_qr/1-1-11b0b7c4-bddd-416c-8608-5ec17e903415&amp;size=1000x1000\" \n                alt=\"\" \n                title=\"HELLO\" \n                width=\"150\" \n                height=\"150\" />\n            </div>\n        </div>\n    </body>\n</html>"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Tournament",
+			"item": [
+				{
+					"name": "Obtener tournament por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tournament/1",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tournament",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todos los tournaments",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/tournament",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tournament"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear una torneo",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"manager_id\": 1,\r\n  \"category_id\": 1,\r\n  \"game_id\": 1,\r\n  \"date\": \"2001-09-28 23:00\",\r\n  \"cost_view\": 0,\r\n  \"cost_competitor\": 0,\r\n  \"name\": \"LMS Torneo Mundial de LOL Season 2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{base_url}}/tournament",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"tournament"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://172.232.178.184/v1",
+			"type": "string"
+		}
+	]
+}
