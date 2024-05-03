@@ -41,10 +41,13 @@ def get_ticket_competitor_id_db(id: str) -> TicketCompetitorOut:
     return parse_ticket_competitor(ticket_competitor)
 
 
-def get_ticket_competitors_by_competitor_id_db(competitor_id: str) -> int:
+def get_ticket_competitors_by_competitor_id_db(competitor_id: str, tournament_id: str) -> int:
     tickets = (
         db.session.query(TicketCompetitor)
-        .where(TicketCompetitor.competitor_id == competitor_id)
+        .where(
+            TicketCompetitor.competitor_id == competitor_id
+            and TicketCompetitor.tournament_id == tournament_id
+        )
         .count()
     )
     return tickets
@@ -104,7 +107,7 @@ def create_ticket_competitor_db(
 ) -> TicketCompetitorOut:
 
     tickets_competitor = get_ticket_competitors_by_competitor_id_db(
-        new_ticket_competitor.competitor_id
+        new_ticket_competitor.competitor_id, new_ticket_competitor.tournament_id
     )
 
     if tickets_competitor >= 1:
