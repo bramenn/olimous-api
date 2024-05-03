@@ -40,8 +40,12 @@ def get_ticket_viewer_id_db(id: str) -> TicketViewerOut:
     return parse_ticket_viewer(ticket_viewer)
 
 
-def get_ticket_viewers_by_viewer_id_db(viewer_id: str) -> int:
-    tickets = db.session.query(TicketViewer).where(TicketViewer.viewer_id == viewer_id).count()
+def get_ticket_viewers_by_viewer_id_db(viewer_id: str, tournament_id: str) -> int:
+    tickets = (
+        db.session.query(TicketViewer)
+        .where(TicketViewer.viewer_id == viewer_id and TicketViewer.tournament_id == tournament_id)
+        .count()
+    )
     return tickets
 
 
@@ -92,7 +96,9 @@ def create_ticket_viewer_db(
     new_ticket_viewer: TicketViewerIn,
 ) -> TicketViewerOut:
 
-    tickets_viewer = get_ticket_viewers_by_viewer_id_db(new_ticket_viewer.viewer_id)
+    tickets_viewer = get_ticket_viewers_by_viewer_id_db(
+        new_ticket_viewer.viewer_id, new_ticket_viewer.tournament_id
+    )
 
     if tickets_viewer >= int(MAX_TICKET_BY_VIEWER):
         raise HTTPException(
